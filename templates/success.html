@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Login Successful | Welcome{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <div class="icon-badge success-badge">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+        </div>
+        <h1>Login Successful!</h1>
+        <p>Your credentials have been verified against the database.</p>
+    </div>
+
+    <div class="alert alert-success">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+        <span>Authentication verified for <strong>{{ user.full_name }}</strong>.</span>
+    </div>
+
+    <!-- Verified User Details Card -->
+    <div class="profile-card">
+        <div class="profile-row">
+            <span class="profile-label">Database Record ID:</span>
+            <span class="profile-value">#{{ user.id }}</span>
+        </div>
+        <div class="profile-row">
+            <span class="profile-label">Login Name / Username:</span>
+            <span class="profile-value">{{ user.username }}</span>
+        </div>
+        <div class="profile-row">
+            <span class="profile-label">Full Name:</span>
+            <span class="profile-value">{{ user.full_name }}</span>
+        </div>
+        <div class="profile-row">
+            <span class="profile-label">Validation Status:</span>
+            <span class="status-badge">MATCH FOUND IN DB</span>
+        </div>
+        <div class="profile-row">
+            <span class="profile-label">Login Session Time:</span>
+            <span class="profile-value">{{ login_time }}</span>
+        </div>
+    </div>
+
+    <a href="{{ url_for('logout') }}" class="btn btn-danger">Log Out</a>
+</div>
+{% endblock %}
